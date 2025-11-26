@@ -1,11 +1,633 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <title>Antczak Enterprise International</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="Antczak Enterprise International – independent digital studio and consulting company, owner of the Stellar Lift brand."
+  />
+
+  <style>
+    :root {
+      --bg-main: #f5f7fb;
+      --bg-card: #ffffff;
+      --border-subtle: #dde3f0;
+      --text-main: #1b2740;
+      --text-muted: #5f6c85;
+      --accent-navy: #003a70;
+      --accent-aqua: #00b5e2;
+      --accent-soft: #7fd9f5;
+      --radius-lg: 16px;
+      --radius-xl: 22px;
+      --shadow-soft: 0 18px 40px rgba(15, 35, 70, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: radial-gradient(circle at top left, #ffffff 0, #f5f7fb 40%, #e4ebf7 100%);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 32px 20px 56px;
+    }
+
+    /* HEADER */
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 32px;
+    }
+
+    .logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .logo-img-box {
+      width: 180px;
+      max-width: 60vw;
+    }
+
+    .logo-img-box img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .logo-text {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    nav {
+      display: flex;
+      gap: 18px;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    nav a {
+      position: relative;
+      padding-bottom: 3px;
+      cursor: pointer;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent-aqua);
+      transition: width 0.18s ease-out;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    /* HERO */
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.4fr);
+      gap: 28px;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    .hero-kicker {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent-navy);
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .hero-title {
+      font-size: clamp(30px, 4vw, 38px);
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--accent-navy);
+    }
+
+    .hero-highlight {
+      color: var(--accent-aqua);
+    }
+
+    .hero-subtitle {
+      font-size: 15px;
+      color: var(--text-muted);
+      max-width: 520px;
+      margin-bottom: 18px;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 18px;
+      font-size: 11px;
+    }
+
+    .badge {
+      border-radius: 999px;
+      padding: 5px 11px;
+      border: 1px solid rgba(0, 58, 112, 0.12);
+      background: rgba(255, 255, 255, 0.9);
+      color: var(--text-muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      backdrop-filter: blur(4px);
+    }
+
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent-aqua);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .btn-primary {
+      border-radius: 999px;
+      padding: 10px 20px;
+      border: none;
+      background: linear-gradient(135deg, var(--accent-aqua), #37c9f0);
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      box-shadow: 0 14px 30px rgba(0, 63, 102, 0.25);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.12s ease-out, box-shadow 0.12s ease-out;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 40px rgba(0, 63, 102, 0.32);
+    }
+
+    .btn-ghost {
+      border-radius: 999px;
+      padding: 9px 18px;
+      border: 1px solid var(--border-subtle);
+      background: rgba(255, 255, 255, 0.85);
+      color: var(--text-main);
+      font-size: 13px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: background 0.12s ease-out, border-color 0.12s ease-out;
+    }
+
+    .btn-ghost:hover {
+      background: #ffffff;
+      border-color: rgba(0, 58, 112, 0.25);
+    }
+
+    .hero-meta {
+      font-size: 12px;
+      color: var(--text-muted);
+      max-width: 520px;
+    }
+
+    .hero-card {
+      border-radius: var(--radius-xl);
+      background: var(--bg-card);
+      padding: 18px 18px 20px;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .hero-card-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--accent-navy);
+      margin-bottom: 4px;
+    }
+
+    .hero-card-sub {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+
+    .hero-card-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      font-size: 12px;
+    }
+
+    .pill-card {
+      border-radius: 999px;
+      padding: 8px 11px;
+      border: 1px solid var(--border-subtle);
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .pill-label {
+      font-weight: 500;
+      color: var(--text-main);
+    }
+
+    .pill-tag {
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(0, 58, 112, 0.16);
+      color: var(--accent-navy);
+      background: #f4f9ff;
+      white-space: nowrap;
+    }
+
+    /* SECTIONS */
+
+    .section {
+      margin-bottom: 40px;
+    }
+
+    .section-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--accent-navy);
+      margin-bottom: 10px;
+    }
+
+    .section-lead {
+      font-size: 14px;
+      color: var(--text-muted);
+      max-width: 620px;
+      margin-bottom: 18px;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .card {
+      border-radius: var(--radius-lg);
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      padding: 14px 14px 16px;
+      box-shadow: 0 12px 28px rgba(15, 35, 70, 0.05);
+      font-size: 13px;
+    }
+
+    .card-title {
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: var(--accent-navy);
+    }
+
+    .card-text {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .card-tag {
+      display: inline-block;
+      margin-top: 8px;
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: #f0f8ff;
+      color: var(--accent-navy);
+      border: 1px solid rgba(0, 58, 112, 0.12);
+    }
+
+    .brands-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .brand-card {
+      border-radius: var(--radius-lg);
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      padding: 14px 14px 16px;
+      font-size: 13px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .brand-title {
+      font-weight: 600;
+      color: var(--accent-navy);
+    }
+
+    .brand-link {
+      font-size: 12px;
+      color: var(--accent-aqua);
+      font-weight: 500;
+    }
+
+    .brand-pill {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* CONTACT & FOOTER */
+
+    .contact-card {
+      border-radius: var(--radius-lg);
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      padding: 16px 16px 18px;
+      max-width: 520px;
+      font-size: 13px;
+    }
+
+    .contact-row {
+      margin-bottom: 6px;
+    }
+
+    .contact-label {
+      font-weight: 500;
+      color: var(--accent-navy);
+    }
+
+    footer {
+      margin-top: 24px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border-subtle);
+      font-size: 11px;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    footer a {
+      color: var(--accent-aqua);
+      text-decoration: none;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 880px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card {
+        order: -1;
+      }
+
+      .cards-grid,
+      .brands-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page {
+        padding: 22px 14px 40px;
+      }
+
+      .cards-grid,
+      .brands-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1>Antczak Enterprise International</h1>
-  <p>Website in progress.</p>
+  <div class="page">
+    <header>
+      <div class="logo-wrap">
+        <div class="logo-img-box">
+          <img src="assets/images/AEI%20Logo.jpg" alt="Antczak Enterprise International logo" />
+        </div>
+        <div class="logo-text">
+          Independent studio and consulting company.  
+          Owner of the Stellar Lift health & performance brand.
+        </div>
+      </div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#services">What we do</a>
+        <a href="#brands">Brands</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section class="hero" id="about">
+        <div>
+          <div class="hero-kicker">Antczak Enterprise International</div>
+          <h1 class="hero-title">
+            Independent digital studio  
+            for <span class="hero-highlight">health, data and performance.</span>
+          </h1>
+          <p class="hero-subtitle">
+            Antczak Enterprise International designs and operates digital products, with a focus on health tracking, analytics and everyday tools that stay simple enough to use.
+          </p>
+
+          <div class="hero-badges">
+            <div class="badge"><span class="badge-dot"></span>Independent company</div>
+            <div class="badge">Owner of Stellar Lift brand</div>
+            <div class="badge">Based in Europe · working globally</div>
+          </div>
+
+          <div class="hero-actions">
+            <a class="btn-primary" href="https://stellarliftapp.com" target="_blank" rel="noopener noreferrer">
+              Visit Stellar Lift →
+            </a>
+            <a class="btn-ghost" href="#contact">Business & partnership contact</a>
+          </div>
+
+          <div class="hero-meta">
+            Stellar Lift is the first ecosystem under Antczak Enterprise International, starting with the Water Tracker app, followed by training, steps and sleep tools.
+          </div>
+        </div>
+
+        <aside class="hero-card" aria-label="Company snapshot">
+          <div class="hero-card-title">Company snapshot</div>
+          <div class="hero-card-sub">
+            Small, focused structure with full ownership of products, decisions and roadmap.
+          </div>
+
+          <div class="hero-card-grid">
+            <div class="pill-card">
+              <span class="pill-label">Digital products</span>
+              <span class="pill-tag">Design · build · operate</span>
+            </div>
+            <div class="pill-card">
+              <span class="pill-label">Focus areas</span>
+              <span class="pill-tag">Health · data · habits</span>
+            </div>
+            <div class="pill-card">
+              <span class="pill-label">Role</span>
+              <span class="pill-tag">Owner & operator</span>
+            </div>
+            <div class="pill-card">
+              <span class="pill-label">Brands</span>
+              <span class="pill-tag">Stellar Lift, others to follow</span>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <!-- SERVICES -->
+      <section id="services" class="section">
+        <h2 class="section-title">What we do</h2>
+        <p class="section-lead">
+          Antczak Enterprise International combines product design, financial thinking and day-to-day operations. The company owns products end-to-end instead of acting as an agency.
+        </p>
+
+        <div class="cards-grid">
+          <div class="card">
+            <div class="card-title">Product ownership</div>
+            <div class="card-text">
+              Full responsibility for concept, design, development and long-term maintenance of digital products, with a focus on clear, calm UX.
+            </div>
+            <span class="card-tag">From prototype to live app</span>
+          </div>
+
+          <div class="card">
+            <div class="card-title">Health & performance tools</div>
+            <div class="card-text">
+              Building simple, evidence-informed tools that help track water, training, steps, sleep and habits without unnecessary noise.
+            </div>
+            <span class="card-tag">Everyday usability first</span>
+          </div>
+
+          <div class="card">
+            <div class="card-title">Data & finance aware</div>
+            <div class="card-text">
+              Product decisions are grounded in numbers: user behaviour, cost structures and long-term sustainability, not just short-term hype.
+            </div>
+            <span class="card-tag">Built on financial discipline</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- BRANDS -->
+      <section id="brands" class="section">
+        <h2 class="section-title">Brands and products</h2>
+        <p class="section-lead">
+          Antczak Enterprise International is the legal and operational owner of the Stellar Lift health & performance ecosystem and future related brands.
+        </p>
+
+        <div class="brands-grid">
+          <div class="brand-card">
+            <div class="brand-title">Stellar Lift ecosystem</div>
+            <div class="card-text">
+              Health and performance brand built around focused trackers – water, training, steps, calories, sleep, habits and mood.
+            </div>
+            <div class="brand-pill">Primary brand · Health & performance</div>
+            <a class="brand-link" href="https://stellarliftapp.com" target="_blank" rel="noopener noreferrer">
+              Visit Stellar Lift website →
+            </a>
+          </div>
+
+          <div class="brand-card">
+            <div class="brand-title">Current live product</div>
+            <div class="card-text">
+              Water Tracker – Drink Reminder is the first app in the Stellar Lift ecosystem, available on Android with more platforms planned.
+            </div>
+            <div class="brand-pill">Google Play · Android</div>
+            <a
+              class="brand-link"
+              href="https://play.google.com/store/apps/details?id=com.stellarlift.watertracker"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Open Water Tracker in Google Play →
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" class="section">
+        <h2 class="section-title">Contact</h2>
+        <p class="section-lead">
+          For business, partnerships or press enquiries, please use the contact details below. Messages are handled directly by the company owner.
+        </p>
+
+        <div class="contact-card">
+          <div class="contact-row">
+            <span class="contact-label">Email:</span>
+            <br />
+            <strong>office@antczak.co.uk</strong>
+          </div>
+          <div class="contact-row">
+            <span class="contact-label">Primary focus:</span>
+            <br />
+            Digital products in health, training and everyday performance.
+          </div>
+          <div class="contact-row">
+            <span class="contact-label">Languages:</span>
+            <br />
+            English · Polish.
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div>© <span id="year"></span> Antczak Enterprise International. All rights reserved.</div>
+      <div>
+        Brand owner of
+        <a href="https://stellarliftapp.com" target="_blank" rel="noopener noreferrer">Stellar Lift</a>.
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
