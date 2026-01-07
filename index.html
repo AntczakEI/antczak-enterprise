@@ -23,7 +23,6 @@
       --radius-xl: 22px;
       --shadow-soft: 0 18px 40px rgba(15, 35, 70, 0.12);
 
-      /* NEW (still company colors) */
       --shadow-strong: 0 22px 55px rgba(15, 35, 70, 0.16);
       --glass: rgba(255, 255, 255, 0.86);
       --focus: rgba(0, 181, 226, 0.35);
@@ -42,7 +41,7 @@
       line-height: 1.6;
     }
 
-    /* NEW: subtle fixed overlay glow (still AEI palette, not Stellar Lift) */
+    /* Slightly stronger fixed overlay glow (company colors) */
     body::before{
       content:"";
       position: fixed;
@@ -50,8 +49,8 @@
       pointer-events: none;
       z-index: -1;
       background:
-        radial-gradient(900px 560px at 18% -10%, rgba(0,181,226,.18), transparent 62%),
-        radial-gradient(820px 520px at 92% 6%, rgba(0,58,112,.12), transparent 60%);
+        radial-gradient(950px 600px at 18% -10%, rgba(0,181,226,.24), transparent 62%),
+        radial-gradient(860px 560px at 92% 6%, rgba(0,58,112,.18), transparent 60%);
     }
 
     a {
@@ -79,23 +78,30 @@
       display: flex;
       align-items: center;
       gap: 16px;
+      min-width: 0;
     }
 
     .logo-img-box {
-      width: 180px;
-      max-width: 60vw;
+      width: 210px;
+      max-width: 62vw;
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
     }
 
+    /* Key fix for transparent logo: contain + max-height */
     .logo-img-box img {
       width: 100%;
+      max-height: 64px;
       height: auto;
+      object-fit: contain;
       display: block;
     }
 
     .logo-text {
       font-size: 13px;
       color: var(--text-muted);
-      max-width: 460px;
+      max-width: 520px;
     }
 
     nav {
@@ -258,14 +264,13 @@
       overflow: hidden;
     }
 
-    /* NEW: subtle top-right glow on hero card */
     .hero-card::before{
       content:"";
       position:absolute;
       inset:-120px -120px auto auto;
       width:320px;
       height:320px;
-      background: radial-gradient(circle, rgba(0,181,226,.18), transparent 62%);
+      background: radial-gradient(circle, rgba(0,181,226,.20), transparent 62%);
       pointer-events:none;
       filter: blur(1px);
     }
@@ -419,7 +424,6 @@
       border-color: rgba(0, 181, 226, 0.18);
     }
 
-    /* NEW: tiny accent stripe */
     .brand-card::before{
       content:"";
       position:absolute;
@@ -456,7 +460,6 @@
       color: var(--text-muted);
     }
 
-    /* NEW: product row inside brand card */
     .products {
       margin-top: 8px;
       display: grid;
@@ -607,6 +610,15 @@
       .product-name{
         max-width: 100%;
       }
+
+      .logo-img-box{
+        width: 240px;
+        max-width: 80vw;
+      }
+
+      .logo-img-box img{
+        max-height: 58px;
+      }
     }
   </style>
 </head>
@@ -615,7 +627,8 @@
     <header>
       <div class="logo-wrap">
         <div class="logo-img-box">
-          <img src="assets/images/AEI%20Logo.jpg" alt="Antczak Enterprise International logo" />
+          <!-- FIX: correct file name + extension -->
+          <img src="assets/images/AEI%20Logo.png" alt="Antczak Enterprise International logo" />
         </div>
         <div class="logo-text">
           Independent studio and consulting company.
@@ -657,7 +670,7 @@
           </div>
 
           <div class="hero-meta">
-            Stellar Lift is the first ecosystem under Antczak Enterprise International, starting with Water and Training apps, with more modules planned.
+            Stellar Lift is the first ecosystem under Antczak Enterprise International, with two Android products currently live (Training + Water).
           </div>
         </div>
 
@@ -741,7 +754,6 @@
             </a>
           </div>
 
-          <!-- UPDATED: live products (WT + TT) -->
           <div class="brand-card">
             <div class="brand-title">Current live products</div>
             <div class="card-text">
