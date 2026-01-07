@@ -22,6 +22,11 @@
       --radius-lg: 16px;
       --radius-xl: 22px;
       --shadow-soft: 0 18px 40px rgba(15, 35, 70, 0.12);
+
+      /* NEW (still company colors) */
+      --shadow-strong: 0 22px 55px rgba(15, 35, 70, 0.16);
+      --glass: rgba(255, 255, 255, 0.86);
+      --focus: rgba(0, 181, 226, 0.35);
     }
 
     * {
@@ -31,11 +36,22 @@
     }
 
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-        sans-serif;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: radial-gradient(circle at top left, #ffffff 0, #f5f7fb 40%, #e4ebf7 100%);
       color: var(--text-main);
       line-height: 1.6;
+    }
+
+    /* NEW: subtle fixed overlay glow (still AEI palette, not Stellar Lift) */
+    body::before{
+      content:"";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+      background:
+        radial-gradient(900px 560px at 18% -10%, rgba(0,181,226,.18), transparent 62%),
+        radial-gradient(820px 520px at 92% 6%, rgba(0,58,112,.12), transparent 60%);
     }
 
     a {
@@ -79,6 +95,7 @@
     .logo-text {
       font-size: 13px;
       color: var(--text-muted);
+      max-width: 460px;
     }
 
     nav {
@@ -86,6 +103,8 @@
       gap: 18px;
       font-size: 14px;
       color: var(--text-muted);
+      flex-wrap: wrap;
+      justify-content: flex-end;
     }
 
     nav a {
@@ -124,15 +143,16 @@
       text-transform: uppercase;
       letter-spacing: 0.16em;
       color: var(--accent-navy);
-      font-weight: 600;
+      font-weight: 700;
       margin-bottom: 8px;
     }
 
     .hero-title {
       font-size: clamp(30px, 4vw, 38px);
-      font-weight: 700;
+      font-weight: 800;
       margin-bottom: 10px;
       color: var(--accent-navy);
+      line-height: 1.15;
     }
 
     .hero-highlight {
@@ -158,12 +178,12 @@
       border-radius: 999px;
       padding: 5px 11px;
       border: 1px solid rgba(0, 58, 112, 0.12);
-      background: rgba(255, 255, 255, 0.9);
+      background: var(--glass);
       color: var(--text-muted);
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      backdrop-filter: blur(4px);
+      backdrop-filter: blur(6px);
     }
 
     .badge-dot {
@@ -171,6 +191,7 @@
       height: 6px;
       border-radius: 999px;
       background: var(--accent-aqua);
+      box-shadow: 0 0 0 4px rgba(0,181,226,0.12);
     }
 
     .hero-actions {
@@ -186,7 +207,7 @@
       border: none;
       background: linear-gradient(135deg, var(--accent-aqua), #37c9f0);
       color: #ffffff;
-      font-weight: 600;
+      font-weight: 700;
       font-size: 14px;
       cursor: pointer;
       box-shadow: 0 14px 30px rgba(0, 63, 102, 0.25);
@@ -205,19 +226,20 @@
       border-radius: 999px;
       padding: 9px 18px;
       border: 1px solid var(--border-subtle);
-      background: rgba(255, 255, 255, 0.85);
+      background: var(--glass);
       color: var(--text-main);
       font-size: 13px;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      transition: background 0.12s ease-out, border-color 0.12s ease-out;
+      transition: background 0.12s ease-out, border-color 0.12s ease-out, transform 0.12s ease-out;
     }
 
     .btn-ghost:hover {
       background: #ffffff;
       border-color: rgba(0, 58, 112, 0.25);
+      transform: translateY(-1px);
     }
 
     .hero-meta {
@@ -231,20 +253,38 @@
       background: var(--bg-card);
       padding: 18px 18px 20px;
       border: 1px solid var(--border-subtle);
-      box-shadow: var(--shadow-soft);
+      box-shadow: var(--shadow-strong);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* NEW: subtle top-right glow on hero card */
+    .hero-card::before{
+      content:"";
+      position:absolute;
+      inset:-120px -120px auto auto;
+      width:320px;
+      height:320px;
+      background: radial-gradient(circle, rgba(0,181,226,.18), transparent 62%);
+      pointer-events:none;
+      filter: blur(1px);
     }
 
     .hero-card-title {
       font-size: 15px;
-      font-weight: 600;
+      font-weight: 700;
       color: var(--accent-navy);
       margin-bottom: 4px;
+      position: relative;
+      z-index: 1;
     }
 
     .hero-card-sub {
       font-size: 12px;
       color: var(--text-muted);
       margin-bottom: 14px;
+      position: relative;
+      z-index: 1;
     }
 
     .hero-card-grid {
@@ -252,6 +292,8 @@
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 10px;
       font-size: 12px;
+      position: relative;
+      z-index: 1;
     }
 
     .pill-card {
@@ -263,10 +305,16 @@
       align-items: center;
       justify-content: space-between;
       gap: 8px;
+      transition: transform 0.12s ease-out, border-color 0.12s ease-out;
+    }
+
+    .pill-card:hover{
+      transform: translateY(-1px);
+      border-color: rgba(0, 181, 226, 0.25);
     }
 
     .pill-label {
-      font-weight: 500;
+      font-weight: 600;
       color: var(--text-main);
     }
 
@@ -288,7 +336,7 @@
 
     .section-title {
       font-size: 20px;
-      font-weight: 700;
+      font-weight: 800;
       color: var(--accent-navy);
       margin-bottom: 10px;
     }
@@ -296,7 +344,7 @@
     .section-lead {
       font-size: 14px;
       color: var(--text-muted);
-      max-width: 620px;
+      max-width: 680px;
       margin-bottom: 18px;
     }
 
@@ -313,10 +361,17 @@
       padding: 14px 14px 16px;
       box-shadow: 0 12px 28px rgba(15, 35, 70, 0.05);
       font-size: 13px;
+      transition: transform 0.12s ease-out, box-shadow 0.12s ease-out, border-color 0.12s ease-out;
+    }
+
+    .card:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 18px 38px rgba(15, 35, 70, 0.10);
+      border-color: rgba(0, 181, 226, 0.18);
     }
 
     .card-title {
-      font-weight: 600;
+      font-weight: 700;
       margin-bottom: 4px;
       color: var(--accent-navy);
     }
@@ -351,23 +406,119 @@
       font-size: 13px;
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 8px;
+      box-shadow: 0 12px 28px rgba(15, 35, 70, 0.05);
+      transition: transform 0.12s ease-out, box-shadow 0.12s ease-out, border-color 0.12s ease-out;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .brand-card:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 18px 38px rgba(15, 35, 70, 0.10);
+      border-color: rgba(0, 181, 226, 0.18);
+    }
+
+    /* NEW: tiny accent stripe */
+    .brand-card::before{
+      content:"";
+      position:absolute;
+      left:0;
+      top:0;
+      width:100%;
+      height:4px;
+      background: linear-gradient(90deg, var(--accent-navy), var(--accent-aqua));
+      opacity: .22;
+      pointer-events:none;
     }
 
     .brand-title {
-      font-weight: 600;
+      font-weight: 800;
       color: var(--accent-navy);
+      margin-top: 2px;
     }
 
     .brand-link {
       font-size: 12px;
       color: var(--accent-aqua);
-      font-weight: 500;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .brand-link:hover{
+      text-decoration: underline;
     }
 
     .brand-pill {
       font-size: 11px;
       color: var(--text-muted);
+    }
+
+    /* NEW: product row inside brand card */
+    .products {
+      margin-top: 8px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .product-row{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap: 12px;
+      padding: 10px 10px;
+      border-radius: 14px;
+      border: 1px solid rgba(0,58,112,0.10);
+      background: rgba(245,247,251,0.7);
+    }
+
+    .product-left{
+      min-width: 0;
+    }
+
+    .product-name{
+      font-weight: 800;
+      color: var(--accent-navy);
+      font-size: 13px;
+      margin-bottom: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 42ch;
+    }
+
+    .product-desc{
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+
+    .product-actions{
+      display:flex;
+      flex-direction: column;
+      gap: 8px;
+      flex: 0 0 auto;
+      align-items: flex-end;
+    }
+
+    .tag-live{
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(0, 181, 226, 0.25);
+      background: rgba(0, 181, 226, 0.10);
+      color: var(--accent-navy);
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .mini-link{
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--accent-aqua);
+      white-space: nowrap;
     }
 
     /* CONTACT & FOOTER */
@@ -379,14 +530,15 @@
       padding: 16px 16px 18px;
       max-width: 520px;
       font-size: 13px;
+      box-shadow: 0 12px 28px rgba(15, 35, 70, 0.05);
     }
 
     .contact-row {
-      margin-bottom: 6px;
+      margin-bottom: 10px;
     }
 
     .contact-label {
-      font-weight: 500;
+      font-weight: 700;
       color: var(--accent-navy);
     }
 
@@ -405,6 +557,7 @@
     footer a {
       color: var(--accent-aqua);
       text-decoration: none;
+      font-weight: 700;
     }
 
     /* RESPONSIVE */
@@ -413,6 +566,10 @@
       header {
         flex-direction: column;
         align-items: flex-start;
+      }
+
+      nav{
+        justify-content: flex-start;
       }
 
       .hero {
@@ -438,6 +595,18 @@
       .brands-grid {
         grid-template-columns: 1fr;
       }
+
+      .product-actions{
+        align-items: flex-start;
+      }
+
+      .product-row{
+        flex-direction: column;
+      }
+
+      .product-name{
+        max-width: 100%;
+      }
     }
   </style>
 </head>
@@ -449,7 +618,7 @@
           <img src="assets/images/AEI%20Logo.jpg" alt="Antczak Enterprise International logo" />
         </div>
         <div class="logo-text">
-          Independent studio and consulting company.  
+          Independent studio and consulting company.
           Owner of the Stellar Lift health & performance brand.
         </div>
       </div>
@@ -467,7 +636,7 @@
         <div>
           <div class="hero-kicker">Antczak Enterprise International</div>
           <h1 class="hero-title">
-            Independent digital studio  
+            Independent digital studio
             for <span class="hero-highlight">health, data and performance.</span>
           </h1>
           <p class="hero-subtitle">
@@ -488,7 +657,7 @@
           </div>
 
           <div class="hero-meta">
-            Stellar Lift is the first ecosystem under Antczak Enterprise International, starting with the Water Tracker app, followed by training, steps and sleep tools.
+            Stellar Lift is the first ecosystem under Antczak Enterprise International, starting with Water and Training apps, with more modules planned.
           </div>
         </div>
 
@@ -513,7 +682,7 @@
             </div>
             <div class="pill-card">
               <span class="pill-label">Brands</span>
-              <span class="pill-tag">Stellar Lift, others to follow</span>
+              <span class="pill-tag">Stellar Lift + future</span>
             </div>
           </div>
         </aside>
@@ -572,20 +741,41 @@
             </a>
           </div>
 
+          <!-- UPDATED: live products (WT + TT) -->
           <div class="brand-card">
-            <div class="brand-title">Current live product</div>
+            <div class="brand-title">Current live products</div>
             <div class="card-text">
-              Water Tracker – Drink Reminder is the first app in the Stellar Lift ecosystem, available on Android with more platforms planned.
+              Two Stellar Lift apps are currently live on Android. More modules are planned, but these are available today.
             </div>
             <div class="brand-pill">Google Play · Android</div>
-            <a
-              class="brand-link"
-              href="https://play.google.com/store/apps/details?id=com.stellarlift.watertracker"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Open Water Tracker in Google Play →
-            </a>
+
+            <div class="products" aria-label="Live products list">
+              <div class="product-row">
+                <div class="product-left">
+                  <div class="product-name">Training Tracker</div>
+                  <div class="product-desc">Fast workout logging — sets, reps, notes, done.</div>
+                </div>
+                <div class="product-actions">
+                  <span class="tag-live">LIVE</span>
+                  <a class="mini-link" href="https://play.google.com/store/apps/details?id=com.stellarlift.trainingtracker" target="_blank" rel="noopener noreferrer">
+                    Open in Google Play →
+                  </a>
+                </div>
+              </div>
+
+              <div class="product-row">
+                <div class="product-left">
+                  <div class="product-name">Water Tracker – Drink Reminder</div>
+                  <div class="product-desc">Hydration reminders and quick daily tracking.</div>
+                </div>
+                <div class="product-actions">
+                  <span class="tag-live">LIVE</span>
+                  <a class="mini-link" href="https://play.google.com/store/apps/details?id=com.stellarlift.watertracker" target="_blank" rel="noopener noreferrer">
+                    Open in Google Play →
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
