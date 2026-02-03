@@ -1,13 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
   <meta charset="UTF-8" />
-  <title>Antczak — Finance & Data Automation</title>
+  <title>Antczak Enterprise International — Finance & Data Automation</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta
     name="description"
-    content="Antczak — Finance & data automation (Excel, Power Query, Power BI). Dashboards, reporting pipelines, and management accounting support."
+    content="Antczak Enterprise International — finance & data automation for small teams. Excel, Power Query and Power BI dashboards, reporting pipelines, and month-end support. NDA available."
   />
+
+  <!-- Canonical + hreflang -->
+  <link rel="canonical" href="https://antczak.co.uk/" />
+  <link rel="alternate" hreflang="en-GB" href="https://antczak.co.uk/" />
+  <link rel="alternate" hreflang="pl-PL" href="https://antczak.co.uk/pl/" />
+  <link rel="alternate" hreflang="x-default" href="https://antczak.co.uk/" />
 
   <style>
     :root {
@@ -24,11 +30,9 @@
       --shadow-soft: 0 18px 40px rgba(15, 35, 70, 0.12);
       --shadow-strong: 0 22px 55px rgba(15, 35, 70, 0.16);
       --glass: rgba(255, 255, 255, 0.86);
-      --focus: rgba(0, 181, 226, 0.35);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
 
     body {
@@ -50,195 +54,112 @@
     }
 
     a { color: inherit; text-decoration: none; }
+    .page { max-width: 1120px; margin: 0 auto; padding: 32px 20px 56px; }
 
-    .page {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 32px 20px 56px;
-    }
-
-    /* HEADER */
     header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-      margin-bottom: 32px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 18px; margin-bottom: 32px;
     }
 
-    .logo-wrap {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      min-width: 0;
-    }
+    .logo-wrap { display: flex; align-items: center; gap: 16px; min-width: 0; }
+    .logo-img-box { width: 210px; max-width: 62vw; flex: 0 0 auto; display: flex; align-items: center; }
+    .logo-img-box img { width: 100%; max-height: 64px; height: auto; object-fit: contain; display: block; }
 
-    .logo-img-box {
-      width: 210px;
-      max-width: 62vw;
-      flex: 0 0 auto;
-      display: flex;
-      align-items: center;
-    }
-
-    .logo-img-box img {
-      width: 100%;
-      max-height: 64px;
-      height: auto;
-      object-fit: contain;
-      display: block;
-    }
-
-    .logo-text {
-      font-size: 13px;
-      color: var(--text-muted);
-      max-width: 520px;
-    }
+    .logo-text { font-size: 13px; color: var(--text-muted); max-width: 560px; }
 
     nav {
-      display: flex;
-      gap: 18px;
-      font-size: 14px;
-      color: var(--text-muted);
-      flex-wrap: wrap;
-      justify-content: flex-end;
+      display: flex; gap: 18px; font-size: 14px; color: var(--text-muted);
+      flex-wrap: wrap; justify-content: flex-end; align-items: center;
     }
 
-    nav a {
-      position: relative;
-      padding-bottom: 3px;
-      cursor: pointer;
-    }
-
+    nav a { position: relative; padding-bottom: 3px; cursor: pointer; }
     nav a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 0;
-      height: 2px;
-      background: var(--accent-aqua);
-      transition: width 0.18s ease-out;
+      content: ""; position: absolute; left: 0; bottom: 0; width: 0; height: 2px;
+      background: var(--accent-aqua); transition: width 0.18s ease-out;
     }
-
     nav a:hover::after { width: 100%; }
 
-    /* HERO */
+    .lang {
+      display: inline-flex; gap: 8px; align-items: center;
+      padding: 6px 10px; border-radius: 999px;
+      border: 1px solid rgba(0, 58, 112, 0.12);
+      background: rgba(255,255,255,0.75);
+    }
+    .lang a { font-weight: 800; font-size: 12px; padding-bottom: 0; }
+    .lang a::after { display: none; }
+    .lang .active { color: var(--accent-navy); }
+    .lang .sep { color: rgba(0,0,0,0.25); font-weight: 700; }
+
     .hero {
       display: grid;
       grid-template-columns: minmax(0, 3fr) minmax(0, 2.4fr);
-      gap: 28px;
-      align-items: center;
-      margin-bottom: 40px;
+      gap: 28px; align-items: center; margin-bottom: 40px;
     }
 
     .hero-kicker {
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--accent-navy);
-      font-weight: 800;
-      margin-bottom: 8px;
+      font-size: 13px; text-transform: uppercase; letter-spacing: 0.16em;
+      color: var(--accent-navy); font-weight: 900; margin-bottom: 8px;
     }
 
     .hero-title {
       font-size: clamp(30px, 4vw, 40px);
-      font-weight: 900;
-      margin-bottom: 10px;
-      color: var(--accent-navy);
-      line-height: 1.12;
+      font-weight: 900; margin-bottom: 10px;
+      color: var(--accent-navy); line-height: 1.12;
     }
 
     .hero-highlight { color: var(--accent-aqua); }
 
     .hero-subtitle {
-      font-size: 15px;
-      color: var(--text-muted);
-      max-width: 560px;
-      margin-bottom: 18px;
+      font-size: 15px; color: var(--text-muted);
+      max-width: 560px; margin-bottom: 18px;
     }
 
     .hero-badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 18px;
-      font-size: 11px;
+      display: flex; flex-wrap: wrap; gap: 8px;
+      margin-bottom: 18px; font-size: 11px;
     }
 
     .badge {
-      border-radius: 999px;
-      padding: 5px 11px;
+      border-radius: 999px; padding: 5px 11px;
       border: 1px solid rgba(0, 58, 112, 0.12);
-      background: var(--glass);
+      background: rgba(255,255,255,0.75);
       color: var(--text-muted);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
+      display: inline-flex; align-items: center; gap: 6px;
       backdrop-filter: blur(6px);
     }
 
     .badge-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
+      width: 6px; height: 6px; border-radius: 999px;
       background: var(--accent-aqua);
       box-shadow: 0 0 0 4px rgba(0,181,226,0.12);
     }
 
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 10px;
-    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 10px; }
 
     .btn-primary {
-      border-radius: 999px;
-      padding: 10px 20px;
-      border: none;
+      border-radius: 999px; padding: 10px 20px; border: none;
       background: linear-gradient(135deg, var(--accent-aqua), #37c9f0);
-      color: #ffffff;
-      font-weight: 800;
-      font-size: 14px;
-      cursor: pointer;
+      color: #ffffff; font-weight: 900; font-size: 14px; cursor: pointer;
       box-shadow: 0 14px 30px rgba(0, 63, 102, 0.25);
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
+      display: inline-flex; align-items: center; gap: 8px;
       transition: transform 0.12s ease-out, box-shadow 0.12s ease-out;
     }
 
-    .btn-primary:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 18px 40px rgba(0, 63, 102, 0.32);
-    }
+    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 18px 40px rgba(0, 63, 102, 0.32); }
 
     .btn-ghost {
-      border-radius: 999px;
-      padding: 9px 18px;
+      border-radius: 999px; padding: 9px 18px;
       border: 1px solid var(--border-subtle);
-      background: var(--glass);
+      background: rgba(255,255,255,0.75);
       color: var(--text-main);
-      font-size: 13px;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
+      font-size: 13px; cursor: pointer;
+      display: inline-flex; align-items: center; gap: 8px;
       transition: background 0.12s ease-out, border-color 0.12s ease-out, transform 0.12s ease-out;
     }
 
-    .btn-ghost:hover {
-      background: #ffffff;
-      border-color: rgba(0, 58, 112, 0.25);
-      transform: translateY(-1px);
-    }
+    .btn-ghost:hover { background: #ffffff; border-color: rgba(0, 58, 112, 0.25); transform: translateY(-1px); }
 
-    .hero-meta {
-      font-size: 12px;
-      color: var(--text-muted);
-      max-width: 560px;
-    }
+    .hero-meta { font-size: 12px; color: var(--text-muted); max-width: 560px; }
 
     .hero-card {
       border-radius: var(--radius-xl);
@@ -254,90 +175,43 @@
       content:"";
       position:absolute;
       inset:-120px -120px auto auto;
-      width:320px;
-      height:320px;
+      width:320px; height:320px;
       background: radial-gradient(circle, rgba(0,181,226,.20), transparent 62%);
       pointer-events:none;
-      filter: blur(1px);
     }
 
-    .hero-card-title {
-      font-size: 15px;
-      font-weight: 900;
-      color: var(--accent-navy);
-      margin-bottom: 4px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero-card-sub {
-      font-size: 12px;
-      color: var(--text-muted);
-      margin-bottom: 14px;
-      position: relative;
-      z-index: 1;
-    }
+    .hero-card-title { font-size: 15px; font-weight: 900; color: var(--accent-navy); margin-bottom: 4px; position: relative; z-index: 1; }
+    .hero-card-sub { font-size: 12px; color: var(--text-muted); margin-bottom: 14px; position: relative; z-index: 1; }
 
     .hero-card-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
-      font-size: 12px;
-      position: relative;
-      z-index: 1;
+      display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px; font-size: 12px; position: relative; z-index: 1;
     }
 
     .pill-card {
-      border-radius: 999px;
-      padding: 8px 11px;
+      border-radius: 999px; padding: 8px 11px;
       border: 1px solid var(--border-subtle);
       background: #ffffff;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 8px;
+      display: flex; align-items: center; justify-content: space-between; gap: 8px;
       transition: transform 0.12s ease-out, border-color 0.12s ease-out;
     }
 
-    .pill-card:hover{
-      transform: translateY(-1px);
-      border-color: rgba(0, 181, 226, 0.25);
-    }
+    .pill-card:hover{ transform: translateY(-1px); border-color: rgba(0, 181, 226, 0.25); }
 
-    .pill-label { font-weight: 800; color: var(--text-main); }
-
+    .pill-label { font-weight: 900; color: var(--text-main); }
     .pill-tag {
-      font-size: 11px;
-      padding: 3px 8px;
-      border-radius: 999px;
+      font-size: 11px; padding: 3px 8px; border-radius: 999px;
       border: 1px solid rgba(0, 58, 112, 0.16);
       color: var(--accent-navy);
       background: #f4f9ff;
       white-space: nowrap;
     }
 
-    /* SECTIONS */
     .section { margin-bottom: 40px; }
+    .section-title { font-size: 20px; font-weight: 900; color: var(--accent-navy); margin-bottom: 10px; }
+    .section-lead { font-size: 14px; color: var(--text-muted); max-width: 760px; margin-bottom: 18px; }
 
-    .section-title {
-      font-size: 20px;
-      font-weight: 900;
-      color: var(--accent-navy);
-      margin-bottom: 10px;
-    }
-
-    .section-lead {
-      font-size: 14px;
-      color: var(--text-muted);
-      max-width: 760px;
-      margin-bottom: 18px;
-    }
-
-    .cards-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
-    }
+    .cards-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
 
     .card {
       border-radius: var(--radius-lg);
@@ -349,77 +223,36 @@
       transition: transform 0.12s ease-out, box-shadow 0.12s ease-out, border-color 0.12s ease-out;
     }
 
-    .card:hover{
-      transform: translateY(-2px);
-      box-shadow: 0 18px 38px rgba(15, 35, 70, 0.10);
-      border-color: rgba(0, 181, 226, 0.18);
-    }
-
-    .card-title {
-      font-weight: 900;
-      margin-bottom: 4px;
-      color: var(--accent-navy);
-    }
-
-    .card-text {
-      font-size: 12px;
-      color: var(--text-muted);
-    }
-
+    .card:hover{ transform: translateY(-2px); box-shadow: 0 18px 38px rgba(15, 35, 70, 0.10); border-color: rgba(0, 181, 226, 0.18); }
+    .card-title { font-weight: 900; margin-bottom: 4px; color: var(--accent-navy); }
+    .card-text { font-size: 12px; color: var(--text-muted); }
     .card-tag {
-      display: inline-block;
-      margin-top: 8px;
-      font-size: 11px;
-      padding: 3px 8px;
-      border-radius: 999px;
-      background: #f0f8ff;
-      color: var(--accent-navy);
+      display: inline-block; margin-top: 8px; font-size: 11px; padding: 3px 8px;
+      border-radius: 999px; background: #f0f8ff; color: var(--accent-navy);
       border: 1px solid rgba(0, 58, 112, 0.12);
     }
 
-    .two-col {
-      display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-      gap: 14px;
-      align-items: start;
-    }
+    .two-col { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 14px; align-items: start; }
 
-    .list {
-      margin-top: 10px;
-      display: grid;
-      gap: 8px;
-      font-size: 13px;
-      color: var(--text-muted);
-    }
+    .list { margin-top: 10px; display: grid; gap: 8px; font-size: 13px; color: var(--text-muted); }
 
     .list-item {
-      display: flex;
-      gap: 10px;
-      align-items: flex-start;
-      padding: 10px 10px;
-      border-radius: 14px;
+      display: flex; gap: 10px; align-items: flex-start;
+      padding: 10px 10px; border-radius: 14px;
       border: 1px solid rgba(0,58,112,0.10);
       background: rgba(245,247,251,0.7);
     }
 
     .check {
-      width: 18px;
-      height: 18px;
-      border-radius: 999px;
+      width: 18px; height: 18px; border-radius: 999px;
       background: rgba(0,181,226,0.18);
       border: 1px solid rgba(0,181,226,0.25);
-      flex: 0 0 auto;
-      margin-top: 2px;
-      position: relative;
+      flex: 0 0 auto; margin-top: 2px; position: relative;
     }
 
     .check:after{
-      content:"";
-      position:absolute;
-      left: 6px;
-      top: 3px;
-      width: 5px;
-      height: 9px;
+      content:""; position:absolute; left: 6px; top: 3px;
+      width: 5px; height: 9px;
       border-right: 2px solid rgba(0,58,112,0.9);
       border-bottom: 2px solid rgba(0,58,112,0.9);
       transform: rotate(40deg);
@@ -427,12 +260,7 @@
 
     .muted { color: var(--text-muted); }
 
-    /* PRODUCTS */
-    .brands-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-    }
+    .brands-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
 
     .brand-card {
       border-radius: var(--radius-lg);
@@ -440,68 +268,30 @@
       border: 1px solid var(--border-subtle);
       padding: 14px 14px 16px;
       font-size: 13px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
+      display: flex; flex-direction: column; gap: 8px;
       box-shadow: 0 12px 28px rgba(15, 35, 70, 0.05);
       transition: transform 0.12s ease-out, box-shadow 0.12s ease-out, border-color 0.12s ease-out;
-      position: relative;
-      overflow: hidden;
+      position: relative; overflow: hidden;
     }
 
-    .brand-card:hover{
-      transform: translateY(-2px);
-      box-shadow: 0 18px 38px rgba(15, 35, 70, 0.10);
-      border-color: rgba(0, 181, 226, 0.18);
-    }
+    .brand-card:hover{ transform: translateY(-2px); box-shadow: 0 18px 38px rgba(15, 35, 70, 0.10); border-color: rgba(0, 181, 226, 0.18); }
 
     .brand-card::before{
-      content:"";
-      position:absolute;
-      left:0;
-      top:0;
-      width:100%;
-      height:4px;
+      content:""; position:absolute; left:0; top:0; width:100%; height:4px;
       background: linear-gradient(90deg, var(--accent-navy), var(--accent-aqua));
-      opacity: .22;
-      pointer-events:none;
+      opacity: .22; pointer-events:none;
     }
 
-    .brand-title {
-      font-weight: 950;
-      color: var(--accent-navy);
-      margin-top: 2px;
-    }
-
-    .brand-link {
-      font-size: 12px;
-      color: var(--accent-aqua);
-      font-weight: 900;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-
+    .brand-title { font-weight: 950; color: var(--accent-navy); margin-top: 2px; }
+    .brand-link { font-size: 12px; color: var(--accent-aqua); font-weight: 900; display: inline-flex; align-items: center; gap: 8px; }
     .brand-link:hover { text-decoration: underline; }
+    .brand-pill { font-size: 11px; color: var(--text-muted); }
 
-    .brand-pill {
-      font-size: 11px;
-      color: var(--text-muted);
-    }
-
-    .products {
-      margin-top: 8px;
-      display: grid;
-      gap: 10px;
-    }
+    .products { margin-top: 8px; display: grid; gap: 10px; }
 
     .product-row{
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap: 12px;
-      padding: 10px 10px;
-      border-radius: 14px;
+      display:flex; align-items:flex-start; justify-content:space-between;
+      gap: 12px; padding: 10px 10px; border-radius: 14px;
       border: 1px solid rgba(0,58,112,0.10);
       background: rgba(245,247,251,0.7);
     }
@@ -509,49 +299,23 @@
     .product-left{ min-width: 0; }
 
     .product-name{
-      font-weight: 950;
-      color: var(--accent-navy);
-      font-size: 13px;
-      margin-bottom: 2px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      max-width: 42ch;
+      font-weight: 950; color: var(--accent-navy); font-size: 13px; margin-bottom: 2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 42ch;
     }
 
-    .product-desc{
-      font-size: 12px;
-      color: var(--text-muted);
-      line-height: 1.45;
-    }
+    .product-desc{ font-size: 12px; color: var(--text-muted); line-height: 1.45; }
 
-    .product-actions{
-      display:flex;
-      flex-direction: column;
-      gap: 8px;
-      flex: 0 0 auto;
-      align-items: flex-end;
-    }
+    .product-actions{ display:flex; flex-direction: column; gap: 8px; flex: 0 0 auto; align-items: flex-end; }
 
     .tag-live{
-      font-size: 11px;
-      padding: 3px 8px;
-      border-radius: 999px;
+      font-size: 11px; padding: 3px 8px; border-radius: 999px;
       border: 1px solid rgba(0, 181, 226, 0.25);
       background: rgba(0, 181, 226, 0.10);
-      color: var(--accent-navy);
-      font-weight: 950;
-      white-space: nowrap;
+      color: var(--accent-navy); font-weight: 950; white-space: nowrap;
     }
 
-    .mini-link{
-      font-size: 12px;
-      font-weight: 950;
-      color: var(--accent-aqua);
-      white-space: nowrap;
-    }
+    .mini-link{ font-size: 12px; font-weight: 950; color: var(--accent-aqua); white-space: nowrap; }
 
-    /* CONTACT & FOOTER */
     .contact-card {
       border-radius: var(--radius-lg);
       background: var(--bg-card);
@@ -563,31 +327,17 @@
     }
 
     .contact-row { margin-bottom: 10px; }
-
-    .contact-label {
-      font-weight: 900;
-      color: var(--accent-navy);
-    }
+    .contact-label { font-weight: 900; color: var(--accent-navy); }
 
     footer {
-      margin-top: 24px;
-      padding-top: 16px;
+      margin-top: 24px; padding-top: 16px;
       border-top: 1px solid var(--border-subtle);
-      font-size: 11px;
-      color: var(--text-muted);
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 8px;
+      font-size: 11px; color: var(--text-muted);
+      display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
     }
 
-    footer a {
-      color: var(--accent-aqua);
-      text-decoration: none;
-      font-weight: 900;
-    }
+    footer a { color: var(--accent-aqua); font-weight: 900; }
 
-    /* RESPONSIVE */
     @media (max-width: 880px) {
       header { flex-direction: column; align-items: flex-start; }
       nav{ justify-content: flex-start; }
@@ -614,10 +364,10 @@
     <header id="home">
       <div class="logo-wrap">
         <div class="logo-img-box">
-          <img src="assets/images/AEI%20Logo.png" alt="Antczak logo" />
+          <img src="assets/images/AEI%20Logo.png" alt="Antczak Enterprise International logo" />
         </div>
         <div class="logo-text">
-          Finance & data automation for small teams — Excel, Power Query, Power BI.
+          <strong>Antczak Enterprise International</strong> — Finance & data automation for small teams (Excel, Power Query, Power BI).
         </div>
       </div>
 
@@ -627,14 +377,19 @@
         <a href="#case-studies">Case Studies</a>
         <a href="#products">Products</a>
         <a href="#contact">Contact</a>
+
+        <span class="lang" aria-label="Language switcher">
+          <a class="active" href="/">EN</a>
+          <span class="sep">|</span>
+          <a href="/pl/">PL</a>
+        </span>
       </nav>
     </header>
 
     <main>
-      <!-- HERO -->
       <section class="hero" aria-label="Introduction">
         <div>
-          <div class="hero-kicker">Antczak</div>
+          <div class="hero-kicker">Antczak Enterprise International</div>
           <h1 class="hero-title">
             Turn manual reporting into <span class="hero-highlight">one-click refresh.</span>
           </h1>
@@ -692,7 +447,6 @@
         </aside>
       </section>
 
-      <!-- SERVICES -->
       <section id="services" class="section" aria-label="Services">
         <h2 class="section-title">Services</h2>
         <p class="section-lead">
@@ -792,7 +546,6 @@
         </div>
       </section>
 
-      <!-- CASE STUDIES -->
       <section id="case-studies" class="section" aria-label="Case studies">
         <h2 class="section-title">Case Studies</h2>
         <p class="section-lead">
@@ -826,11 +579,10 @@
         </div>
       </section>
 
-      <!-- PRODUCTS -->
       <section id="products" class="section" aria-label="Products">
         <h2 class="section-title">Products</h2>
         <p class="section-lead">
-          Separate from consulting work. Products are operated under the Stellar Lift ecosystem.
+          Products are operated under the Stellar Lift ecosystem (separate from consulting work).
         </p>
 
         <div class="brands-grid">
@@ -847,9 +599,7 @@
 
           <div class="brand-card">
             <div class="brand-title">Live apps (Android)</div>
-            <div class="card-text">
-              Available today on Google Play.
-            </div>
+            <div class="card-text">Available today on Google Play.</div>
             <div class="brand-pill">Google Play · Android</div>
 
             <div class="products" aria-label="Live products list">
@@ -884,7 +634,6 @@
         </div>
       </section>
 
-      <!-- CONTACT -->
       <section id="contact" class="section" aria-label="Contact">
         <h2 class="section-title">Contact</h2>
         <p class="section-lead">
@@ -917,7 +666,7 @@
     </main>
 
     <footer>
-      <div>© <span id="year"></span> Antczak. All rights reserved. NDA available.</div>
+      <div>© <span id="year"></span> Antczak Enterprise International. All rights reserved. NDA available.</div>
       <div>
         Products: <a href="https://stellarliftapp.com" target="_blank" rel="noopener noreferrer">Stellar Lift</a>.
       </div>
