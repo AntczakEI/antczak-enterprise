@@ -24,10 +24,8 @@
       --text-muted: #5f6c85;
       --accent-navy: #003a70;
       --accent-aqua: #00b5e2;
-      --accent-soft: #7fd9f5;
       --radius-lg: 16px;
       --radius-xl: 22px;
-      --shadow-soft: 0 18px 40px rgba(15, 35, 70, 0.12);
       --shadow-strong: 0 22px 55px rgba(15, 35, 70, 0.16);
       --glass: rgba(255, 255, 255, 0.86);
     }
@@ -57,34 +55,68 @@
     .page { max-width: 1120px; margin: 0 auto; padding: 32px 20px 56px; }
 
     header {
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 18px; margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 32px;
     }
 
     .logo-wrap { display: flex; align-items: center; gap: 16px; min-width: 0; }
-    .logo-img-box { width: 210px; max-width: 62vw; flex: 0 0 auto; display: flex; align-items: center; }
-    .logo-img-box img { width: 100%; max-height: 64px; height: auto; object-fit: contain; display: block; }
+
+    .logo-img-box {
+      width: 210px;
+      max-width: 62vw;
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+    }
+
+    .logo-img-box img {
+      width: 100%;
+      max-height: 64px;
+      height: auto;
+      object-fit: contain;
+      display: block;
+    }
 
     .logo-text { font-size: 13px; color: var(--text-muted); max-width: 560px; }
 
     nav {
-      display: flex; gap: 18px; font-size: 14px; color: var(--text-muted);
-      flex-wrap: wrap; justify-content: flex-end; align-items: center;
+      display: flex;
+      gap: 18px;
+      font-size: 14px;
+      color: var(--text-muted);
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      align-items: center;
     }
 
     nav a { position: relative; padding-bottom: 3px; cursor: pointer; }
+
     nav a::after {
-      content: ""; position: absolute; left: 0; bottom: 0; width: 0; height: 2px;
-      background: var(--accent-aqua); transition: width 0.18s ease-out;
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent-aqua);
+      transition: width 0.18s ease-out;
     }
+
     nav a:hover::after { width: 100%; }
 
     .lang {
-      display: inline-flex; gap: 8px; align-items: center;
-      padding: 6px 10px; border-radius: 999px;
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      padding: 6px 10px;
+      border-radius: 999px;
       border: 1px solid rgba(0, 58, 112, 0.12);
       background: rgba(255,255,255,0.75);
     }
+
     .lang a { font-weight: 800; font-size: 12px; padding-bottom: 0; }
     .lang a::after { display: none; }
     .lang .active { color: var(--accent-navy); }
@@ -93,43 +125,61 @@
     .hero {
       display: grid;
       grid-template-columns: minmax(0, 3fr) minmax(0, 2.4fr);
-      gap: 28px; align-items: center; margin-bottom: 40px;
+      gap: 28px;
+      align-items: center;
+      margin-bottom: 40px;
     }
 
     .hero-kicker {
-      font-size: 13px; text-transform: uppercase; letter-spacing: 0.16em;
-      color: var(--accent-navy); font-weight: 900; margin-bottom: 8px;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent-navy);
+      font-weight: 900;
+      margin-bottom: 8px;
     }
 
     .hero-title {
       font-size: clamp(30px, 4vw, 40px);
-      font-weight: 900; margin-bottom: 10px;
-      color: var(--accent-navy); line-height: 1.12;
+      font-weight: 900;
+      margin-bottom: 10px;
+      color: var(--accent-navy);
+      line-height: 1.12;
     }
 
     .hero-highlight { color: var(--accent-aqua); }
 
     .hero-subtitle {
-      font-size: 15px; color: var(--text-muted);
-      max-width: 560px; margin-bottom: 18px;
+      font-size: 15px;
+      color: var(--text-muted);
+      max-width: 560px;
+      margin-bottom: 18px;
     }
 
     .hero-badges {
-      display: flex; flex-wrap: wrap; gap: 8px;
-      margin-bottom: 18px; font-size: 11px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 18px;
+      font-size: 11px;
     }
 
     .badge {
-      border-radius: 999px; padding: 5px 11px;
+      border-radius: 999px;
+      padding: 5px 11px;
       border: 1px solid rgba(0, 58, 112, 0.12);
-      background: rgba(255,255,255,0.75);
+      background: var(--glass);
       color: var(--text-muted);
-      display: inline-flex; align-items: center; gap: 6px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
       backdrop-filter: blur(6px);
     }
 
     .badge-dot {
-      width: 6px; height: 6px; border-radius: 999px;
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
       background: var(--accent-aqua);
       box-shadow: 0 0 0 4px rgba(0,181,226,0.12);
     }
@@ -137,29 +187,51 @@
     .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 10px; }
 
     .btn-primary {
-      border-radius: 999px; padding: 10px 20px; border: none;
+      border-radius: 999px;
+      padding: 10px 20px;
+      border: none;
       background: linear-gradient(135deg, var(--accent-aqua), #37c9f0);
-      color: #ffffff; font-weight: 900; font-size: 14px; cursor: pointer;
+      color: #ffffff;
+      font-weight: 900;
+      font-size: 14px;
+      cursor: pointer;
       box-shadow: 0 14px 30px rgba(0, 63, 102, 0.25);
-      display: inline-flex; align-items: center; gap: 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
       transition: transform 0.12s ease-out, box-shadow 0.12s ease-out;
     }
 
-    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 18px 40px rgba(0, 63, 102, 0.32); }
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 40px rgba(0, 63, 102, 0.32);
+    }
 
     .btn-ghost {
-      border-radius: 999px; padding: 9px 18px;
+      border-radius: 999px;
+      padding: 9px 18px;
       border: 1px solid var(--border-subtle);
-      background: rgba(255,255,255,0.75);
+      background: var(--glass);
       color: var(--text-main);
-      font-size: 13px; cursor: pointer;
-      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 13px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
       transition: background 0.12s ease-out, border-color 0.12s ease-out, transform 0.12s ease-out;
     }
 
-    .btn-ghost:hover { background: #ffffff; border-color: rgba(0, 58, 112, 0.25); transform: translateY(-1px); }
+    .btn-ghost:hover {
+      background: #ffffff;
+      border-color: rgba(0, 58, 112, 0.25);
+      transform: translateY(-1px);
+    }
 
-    .hero-meta { font-size: 12px; color: var(--text-muted); max-width: 560px; }
+    .hero-meta {
+      font-size: 12px;
+      color: var(--text-muted);
+      max-width: 560px;
+    }
 
     .hero-card {
       border-radius: var(--radius-xl);
@@ -175,32 +247,61 @@
       content:"";
       position:absolute;
       inset:-120px -120px auto auto;
-      width:320px; height:320px;
+      width:320px;
+      height:320px;
       background: radial-gradient(circle, rgba(0,181,226,.20), transparent 62%);
       pointer-events:none;
     }
 
-    .hero-card-title { font-size: 15px; font-weight: 900; color: var(--accent-navy); margin-bottom: 4px; position: relative; z-index: 1; }
-    .hero-card-sub { font-size: 12px; color: var(--text-muted); margin-bottom: 14px; position: relative; z-index: 1; }
+    .hero-card-title {
+      font-size: 15px;
+      font-weight: 900;
+      color: var(--accent-navy);
+      margin-bottom: 4px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-card-sub {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+      position: relative;
+      z-index: 1;
+    }
 
     .hero-card-grid {
-      display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px; font-size: 12px; position: relative; z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      font-size: 12px;
+      position: relative;
+      z-index: 1;
     }
 
     .pill-card {
-      border-radius: 999px; padding: 8px 11px;
+      border-radius: 999px;
+      padding: 8px 11px;
       border: 1px solid var(--border-subtle);
       background: #ffffff;
-      display: flex; align-items: center; justify-content: space-between; gap: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
       transition: transform 0.12s ease-out, border-color 0.12s ease-out;
     }
 
-    .pill-card:hover{ transform: translateY(-1px); border-color: rgba(0, 181, 226, 0.25); }
+    .pill-card:hover{
+      transform: translateY(-1px);
+      border-color: rgba(0, 181, 226, 0.25);
+    }
 
     .pill-label { font-weight: 900; color: var(--text-main); }
+
     .pill-tag {
-      font-size: 11px; padding: 3px 8px; border-radius: 999px;
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 999px;
       border: 1px solid rgba(0, 58, 112, 0.16);
       color: var(--accent-navy);
       background: #f4f9ff;
@@ -208,10 +309,26 @@
     }
 
     .section { margin-bottom: 40px; }
-    .section-title { font-size: 20px; font-weight: 900; color: var(--accent-navy); margin-bottom: 10px; }
-    .section-lead { font-size: 14px; color: var(--text-muted); max-width: 760px; margin-bottom: 18px; }
 
-    .cards-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+    .section-title {
+      font-size: 20px;
+      font-weight: 900;
+      color: var(--accent-navy);
+      margin-bottom: 10px;
+    }
+
+    .section-lead {
+      font-size: 14px;
+      color: var(--text-muted);
+      max-width: 760px;
+      margin-bottom: 18px;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
 
     .card {
       border-radius: var(--radius-lg);
@@ -223,22 +340,41 @@
       transition: transform 0.12s ease-out, box-shadow 0.12s ease-out, border-color 0.12s ease-out;
     }
 
-    .card:hover{ transform: translateY(-2px); box-shadow: 0 18px 38px rgba(15, 35, 70, 0.10); border-color: rgba(0, 181, 226, 0.18); }
+    .card:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 18px 38px rgba(15, 35, 70, 0.10);
+      border-color: rgba(0, 181, 226, 0.18);
+    }
+
     .card-title { font-weight: 900; margin-bottom: 4px; color: var(--accent-navy); }
     .card-text { font-size: 12px; color: var(--text-muted); }
+
     .card-tag {
-      display: inline-block; margin-top: 8px; font-size: 11px; padding: 3px 8px;
-      border-radius: 999px; background: #f0f8ff; color: var(--accent-navy);
+      display: inline-block;
+      margin-top: 8px;
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: #f0f8ff;
+      color: var(--accent-navy);
       border: 1px solid rgba(0, 58, 112, 0.12);
     }
 
-    .two-col { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 14px; align-items: start; }
+    .two-col {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 14px;
+      align-items: start;
+    }
 
     .list { margin-top: 10px; display: grid; gap: 8px; font-size: 13px; color: var(--text-muted); }
 
     .list-item {
-      display: flex; gap: 10px; align-items: flex-start;
-      padding: 10px 10px; border-radius: 14px;
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      padding: 10px 10px;
+      border-radius: 14px;
       border: 1px solid rgba(0,58,112,0.10);
       background: rgba(245,247,251,0.7);
     }
@@ -251,8 +387,12 @@
     }
 
     .check:after{
-      content:""; position:absolute; left: 6px; top: 3px;
-      width: 5px; height: 9px;
+      content:"";
+      position:absolute;
+      left: 6px;
+      top: 3px;
+      width: 5px;
+      height: 9px;
       border-right: 2px solid rgba(0,58,112,0.9);
       border-bottom: 2px solid rgba(0,58,112,0.9);
       transform: rotate(40deg);
@@ -260,7 +400,11 @@
 
     .muted { color: var(--text-muted); }
 
-    .brands-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+    .brands-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
 
     .brand-card {
       border-radius: var(--radius-lg);
@@ -268,18 +412,31 @@
       border: 1px solid var(--border-subtle);
       padding: 14px 14px 16px;
       font-size: 13px;
-      display: flex; flex-direction: column; gap: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
       box-shadow: 0 12px 28px rgba(15, 35, 70, 0.05);
       transition: transform 0.12s ease-out, box-shadow 0.12s ease-out, border-color 0.12s ease-out;
-      position: relative; overflow: hidden;
+      position: relative;
+      overflow: hidden;
     }
 
-    .brand-card:hover{ transform: translateY(-2px); box-shadow: 0 18px 38px rgba(15, 35, 70, 0.10); border-color: rgba(0, 181, 226, 0.18); }
+    .brand-card:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 18px 38px rgba(15, 35, 70, 0.10);
+      border-color: rgba(0, 181, 226, 0.18);
+    }
 
     .brand-card::before{
-      content:""; position:absolute; left:0; top:0; width:100%; height:4px;
+      content:"";
+      position:absolute;
+      left:0;
+      top:0;
+      width:100%;
+      height:4px;
       background: linear-gradient(90deg, var(--accent-navy), var(--accent-aqua));
-      opacity: .22; pointer-events:none;
+      opacity: .22;
+      pointer-events:none;
     }
 
     .brand-title { font-weight: 950; color: var(--accent-navy); margin-top: 2px; }
@@ -290,8 +447,12 @@
     .products { margin-top: 8px; display: grid; gap: 10px; }
 
     .product-row{
-      display:flex; align-items:flex-start; justify-content:space-between;
-      gap: 12px; padding: 10px 10px; border-radius: 14px;
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap: 12px;
+      padding: 10px 10px;
+      border-radius: 14px;
       border: 1px solid rgba(0,58,112,0.10);
       background: rgba(245,247,251,0.7);
     }
@@ -299,19 +460,35 @@
     .product-left{ min-width: 0; }
 
     .product-name{
-      font-weight: 950; color: var(--accent-navy); font-size: 13px; margin-bottom: 2px;
-      white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 42ch;
+      font-weight: 950;
+      color: var(--accent-navy);
+      font-size: 13px;
+      margin-bottom: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 42ch;
     }
 
     .product-desc{ font-size: 12px; color: var(--text-muted); line-height: 1.45; }
 
-    .product-actions{ display:flex; flex-direction: column; gap: 8px; flex: 0 0 auto; align-items: flex-end; }
+    .product-actions{
+      display:flex;
+      flex-direction: column;
+      gap: 8px;
+      flex: 0 0 auto;
+      align-items: flex-end;
+    }
 
     .tag-live{
-      font-size: 11px; padding: 3px 8px; border-radius: 999px;
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 999px;
       border: 1px solid rgba(0, 181, 226, 0.25);
       background: rgba(0, 181, 226, 0.10);
-      color: var(--accent-navy); font-weight: 950; white-space: nowrap;
+      color: var(--accent-navy);
+      font-weight: 950;
+      white-space: nowrap;
     }
 
     .mini-link{ font-size: 12px; font-weight: 950; color: var(--accent-aqua); white-space: nowrap; }
@@ -330,10 +507,15 @@
     .contact-label { font-weight: 900; color: var(--accent-navy); }
 
     footer {
-      margin-top: 24px; padding-top: 16px;
+      margin-top: 24px;
+      padding-top: 16px;
       border-top: 1px solid var(--border-subtle);
-      font-size: 11px; color: var(--text-muted);
-      display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+      font-size: 11px;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
     }
 
     footer a { color: var(--accent-aqua); font-weight: 900; }
@@ -394,32 +576,32 @@
             Turn manual reporting into <span class="hero-highlight">one-click refresh.</span>
           </h1>
           <p class="hero-subtitle">
-            I build reliable reporting pipelines and KPI dashboards using Excel, Power Query and Power BI — so you close faster, reduce errors, and always know where the numbers come from.
+            Delivery of stable reporting pipelines and KPI dashboards using Excel, Power Query and Power BI — reducing manual effort, limiting errors, and improving transparency of results.
           </p>
 
           <div class="hero-badges" aria-label="Capabilities">
             <div class="badge"><span class="badge-dot"></span>Excel automation</div>
             <div class="badge">Power Query pipelines</div>
             <div class="badge">Power BI dashboards</div>
-            <div class="badge">Management accounting support</div>
+            <div class="badge">Month-end support</div>
           </div>
 
           <div class="hero-actions">
             <a class="btn-primary" href="mailto:office@antczak.co.uk?subject=Finance%20automation%20enquiry">
-              Email me →
+              Email →
             </a>
-            <a class="btn-ghost" href="#services">See services</a>
+            <a class="btn-ghost" href="#services">View services</a>
           </div>
 
           <div class="hero-meta">
-            Typical outcomes: fewer manual steps, clearer KPI visibility, and reporting you can trust. NDA available.
+            Typical outcomes: fewer manual steps, consistent KPI definitions, and audit-friendly reporting. NDA available.
           </div>
         </div>
 
         <aside class="hero-card" aria-label="Engagement snapshot">
           <div class="hero-card-title">Engagement snapshot</div>
           <div class="hero-card-sub">
-            Clear scope, fast delivery, and simple handover.
+            Clear scope, predictable delivery, and straightforward handover.
           </div>
 
           <div class="hero-card-grid">
@@ -442,7 +624,7 @@
           </div>
 
           <div class="muted" style="margin-top:12px;font-size:12px;position:relative;z-index:1;">
-            *Depends on scope and data access. You always get a working file + handover notes.
+            *Depends on scope and data access. Deliverables include a working file and handover notes.
           </div>
         </aside>
       </section>
@@ -450,14 +632,14 @@
       <section id="services" class="section" aria-label="Services">
         <h2 class="section-title">Services</h2>
         <p class="section-lead">
-          Practical work that removes friction in finance operations — with measurable outcomes, not fluff.
+          Support focused on improving finance reporting and data flows, with emphasis on quality, consistency and measurable outcomes.
         </p>
 
         <div class="cards-grid" role="list">
           <div class="card" role="listitem">
             <div class="card-title">Reporting automation</div>
             <div class="card-text">
-              Replace copy/paste reporting with Power Query refresh pipelines, clean templates, and consistent outputs.
+              Replacement of copy/paste reporting with refreshable Power Query pipelines, clean templates and consistent outputs.
             </div>
             <span class="card-tag">Excel · Power Query</span>
           </div>
@@ -465,7 +647,7 @@
           <div class="card" role="listitem">
             <div class="card-title">KPI dashboards</div>
             <div class="card-text">
-              Build dashboards for margin, costs, sales and operational KPIs — with clear definitions and drill-down.
+              Dashboards for margin, costs, sales and operational KPIs, including definitions and drill-down where required.
             </div>
             <span class="card-tag">Power BI · Excel</span>
           </div>
@@ -473,7 +655,7 @@
           <div class="card" role="listitem">
             <div class="card-title">Month-end support</div>
             <div class="card-text">
-              Improve close routines: reconciliations, accrual structures, variance views, and simple controls.
+              Improvements to close routines: reconciliations, accrual structures, variance views and lightweight controls.
             </div>
             <span class="card-tag">Management accounting</span>
           </div>
@@ -485,15 +667,15 @@
           <div class="card">
             <div class="card-title">Packages</div>
             <div class="card-text">
-              Simple, productised options to avoid endless back-and-forth.
+              Defined packages to keep scope, timeline and handover predictable.
             </div>
 
             <div class="list" aria-label="Packages list">
               <div class="list-item">
                 <span class="check" aria-hidden="true"></span>
                 <div>
-                  <strong>Paid Audit (60 min)</strong><br/>
-                  <span class="muted">Diagnosis + plan + quick wins. Best if you’re unsure what to fix first.</span>
+                  <strong>Audit (60 min)</strong><br/>
+                  <span class="muted">Assessment, recommendations and prioritised quick wins.</span>
                 </div>
               </div>
 
@@ -501,7 +683,7 @@
                 <span class="check" aria-hidden="true"></span>
                 <div>
                   <strong>Fix in 48h (defined scope)</strong><br/>
-                  <span class="muted">Repair a specific report/spreadsheet and make it refreshable and stable.</span>
+                  <span class="muted">Stabilisation of a specific report/workbook and refresh setup.</span>
                 </div>
               </div>
 
@@ -509,7 +691,7 @@
                 <span class="check" aria-hidden="true"></span>
                 <div>
                   <strong>Dashboard in a week</strong><br/>
-                  <span class="muted">Automated refresh + KPI view + handover notes for ongoing use.</span>
+                  <span class="muted">Refreshable KPI view with clear definitions and handover notes.</span>
                 </div>
               </div>
             </div>
@@ -521,8 +703,8 @@
           </div>
 
           <div class="card">
-            <div class="card-title">What you get</div>
-            <div class="card-text">Deliverables are designed to be usable by your team, not “black box” work.</div>
+            <div class="card-title">Deliverables</div>
+            <div class="card-text">Outputs designed for long-term use and internal handover.</div>
 
             <div class="list" aria-label="Deliverables list">
               <div class="list-item">
@@ -531,11 +713,11 @@
               </div>
               <div class="list-item">
                 <span class="check" aria-hidden="true"></span>
-                <div><strong>Definitions</strong><br/><span class="muted">KPI logic, assumptions, and data mapping.</span></div>
+                <div><strong>Definitions</strong><br/><span class="muted">KPI logic, assumptions, data mapping.</span></div>
               </div>
               <div class="list-item">
                 <span class="check" aria-hidden="true"></span>
-                <div><strong>Handover notes</strong><br/><span class="muted">Simple steps for refresh + maintenance.</span></div>
+                <div><strong>Handover notes</strong><br/><span class="muted">Simple refresh steps and maintenance notes.</span></div>
               </div>
               <div class="list-item">
                 <span class="check" aria-hidden="true"></span>
@@ -549,14 +731,14 @@
       <section id="case-studies" class="section" aria-label="Case studies">
         <h2 class="section-title">Case Studies</h2>
         <p class="section-lead">
-          Short examples of the type of work delivered (details can be shared privately due to confidentiality).
+          Examples of typical engagements (details available privately due to confidentiality).
         </p>
 
         <div class="cards-grid" role="list">
           <div class="card" role="listitem">
             <div class="card-title">One-click weekly reporting</div>
             <div class="card-text">
-              Replaced manual consolidation across multiple sheets with Power Query refresh + consistent outputs.
+              Consolidation replaced by a refreshable pipeline and consistent outputs.
             </div>
             <span class="card-tag">Automation</span>
           </div>
@@ -564,15 +746,15 @@
           <div class="card" role="listitem">
             <div class="card-title">Margin & cost dashboard</div>
             <div class="card-text">
-              Built KPI definitions and a dashboard view to spot trends, outliers, and drivers without digging.
+              KPI definitions and dashboard view implemented for trend and driver visibility.
             </div>
             <span class="card-tag">Dashboards</span>
           </div>
 
           <div class="card" role="listitem">
-            <div class="card-title">Month-end close cleanup</div>
+            <div class="card-title">Month-end close improvements</div>
             <div class="card-text">
-              Improved reconciliation flow, reduced noise, and made variances explainable with simple controls.
+              Reconciliation flow and variance structure improved for clearer explanations and control.
             </div>
             <span class="card-tag">Close support</span>
           </div>
@@ -582,7 +764,7 @@
       <section id="products" class="section" aria-label="Products">
         <h2 class="section-title">Products</h2>
         <p class="section-lead">
-          Products are operated under the Stellar Lift ecosystem (separate from consulting work).
+          Products are operated under the Stellar Lift ecosystem (separate from consulting services).
         </p>
 
         <div class="brands-grid">
@@ -599,7 +781,7 @@
 
           <div class="brand-card">
             <div class="brand-title">Live apps (Android)</div>
-            <div class="card-text">Available today on Google Play.</div>
+            <div class="card-text">Available on Google Play.</div>
             <div class="brand-pill">Google Play · Android</div>
 
             <div class="products" aria-label="Live products list">
@@ -637,7 +819,7 @@
       <section id="contact" class="section" aria-label="Contact">
         <h2 class="section-title">Contact</h2>
         <p class="section-lead">
-          For consulting enquiries, partnerships, or press — email is the fastest route. Messages are handled directly.
+          For enquiries, partnerships or press, email is preferred. Messages are handled directly.
         </p>
 
         <div class="contact-card">
@@ -647,8 +829,8 @@
           </div>
 
           <div class="contact-row">
-            <span class="contact-label">Best when you include:</span><br />
-            <span class="muted">What you’re trying to report, where the data comes from, and the outcome you want.</span>
+            <span class="contact-label">Helpful to include:</span><br />
+            <span class="muted">Target output, data sources, timeline, and any constraints (access, systems, confidentiality).</span>
           </div>
 
           <div class="contact-row">
@@ -657,7 +839,7 @@
           </div>
 
           <div style="margin-top:12px;">
-            <a class="btn-primary" href="mailto:office@antczak.co.uk?subject=Enquiry%20-%20Scope%20call&body=Hi%2C%0A%0AWhat%20I%20need%3A%20%0AData%20sources%3A%20%0ADeadline%3A%20%0A%0AThanks%2C">
+            <a class="btn-primary" href="mailto:office@antczak.co.uk?subject=Enquiry%20-%20Scope%20call&body=Hi%2C%0A%0AOutcome%20required%3A%20%0AData%20sources%3A%20%0ATimeline%3A%20%0A%0AThanks%2C">
               Start an enquiry →
             </a>
           </div>
