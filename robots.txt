@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://antczak.co.uk/sitemap.xml
